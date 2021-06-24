@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sentiment Analyzer</title>
+    <link rel="stylesheet" href="/styles/resets.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/form.css">
+    
+  </head>
+
+  <body>
+    <main>
+      <div class="container">
+        <p>Enter a URL of an article / a blog to discover its sentiment.</p>
+        <section>
+          <form id="form">
+            <label for="artical-url">URL</label>
+            <input id="artical-url" type="text" name="input" value="" placeholder="Enter Article URL here" />
+            <!--i put all the javascript in the filed named client i.e i minified them-->
+             
+            <input type="submit" name="" value="submit" onclick=" 
+            return Client.SubmitButton(event)" onsubmit="return SubmitButton(event)">
+
+          </form>
+        </section>
+
+        <section>
+          <strong>The Results:</strong>
+          
+          <div id="myAgreement"></div>
+          <div id="mySubjectivity"></div>
+          <div id="myConfidence"></div>
+          <div id="myIrony"></div>
+          <div id="myScore_tag"></div>
+        </section>
+      </div>
+    </main>
+    <script> 
+    // i will call the register service worker function  with our app if the browser supports service workers.
+      // Check that service workers are supported
+     if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+        })
+      }
+    </script>
+  </body>
+</html>
